@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costco好市多 2025/07/19(六) 現場優惠情報</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .stats {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* 主容器 */
+        .products-grid {
+            padding: 20px 30px;
+            background: #f8f9fa;
+        }
+
+        /* 區塊標題 */
+        .section-header {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+        }
+
+        .section-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1em;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* 圖片區塊 */
+        .products-section {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* 橫向圖片區塊 */
+        .landscape-section {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+
+        /* 直向圖片區塊 */
+        .portrait-section {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 圖片容器 - 根據比例調整 */
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 橫向圖片容器 (800x600) */
+        .product-image-container.landscape {
+            height: 200px;
+        }
+
+        /* 直向圖片容器 (600x800) */
+        .product-image-container.portrait {
+            height: 300px;
+        }
+
+        /* 預設容器高度 */
+        .product-image-container:not(.landscape):not(.portrait) {
+            height: 240px;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.02);
+        }
+
+        /* 圖片比例標籤 */
+        .image-ratio-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .landscape-badge {
+            background: rgba(52, 152, 219, 0.9) !important;
+        }
+
+        .portrait-badge {
+            background: rgba(231, 76, 60, 0.9) !important;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 1em;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .products-grid {
+                padding: 15px;
+            }
+
+            .section-header {
+                margin: 20px 0 15px 0;
+                padding: 15px;
+            }
+
+            .section-header h2 {
+                font-size: 1.5em;
+            }
+
+            .landscape-section,
+            .portrait-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .product-image-container.landscape {
+                height: 180px;
+            }
+
+            .product-image-container.portrait {
+                height: 260px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .landscape-section {
+                grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+                gap: 25px;
+            }
+
+            .portrait-section {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 25px;
+            }
+
+            .product-image-container.landscape {
+                height: 240px;
+            }
+
+            .product-image-container.portrait {
+                height: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛒 Costco好市多 2025/07/19(六) 現場優惠情報 🏷️</h1>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">116</span>
+                <div class="stat-label">商品總數</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2025-07-19</span>
+                <div class="stat-label">抓取日期</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">23:29:06</span>
+                <div class="stat-label">抓取時間</div>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            
+        <div class="section-header">
+            <h2>🖼️ 橫向商品圖片 (84 張)</h2>
+            <p>適合展示商品全貌的寬幅圖片</p>
+        </div>
+        <div class="products-section landscape-section">
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_2-800x600.jpg" alt="KUNG FU 匠拌麵-鵝油金蔥拌麵 #136652" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">KUNG FU 匠拌麵-鵝油金蔥拌麵 #136652</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_3-800x600.jpg" alt="韓味不二海苔酥 #213492" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">韓味不二海苔酥 #213492</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_6-800x600.jpg" alt="YAKULT 養樂多300活菌發酵乳 #83598" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">YAKULT 養樂多300活菌發酵乳 #83598</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_7-800x600.jpg" alt="GAO JIN 高津德式香腸 #12016" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">GAO JIN 高津德式香腸 #12016</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_9-800x600.jpg" alt="POPCORNERS 爆米花脆片鹹甜口味 #228888" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">POPCORNERS 爆米花脆片鹹甜口味 #228888</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_10-800x600.jpg" alt="NESCAFE 雀巢金牌冰萃濾袋雙口味組 #232545" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">NESCAFE 雀巢金牌冰萃濾袋雙口味組 #232545</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_12-800x600.jpg" alt="CONTINENTAL 馬牌TC6輪胎 #129873" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CONTINENTAL 馬牌TC6輪胎 #129873</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_13-800x600.jpg" alt="DURACELL 金頂超能量AA三號/AAA四號電池20入 #1022328 #1022330" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">DURACELL 金頂超能量AA三號/AAA四號電池20入 #1022328 #1022330</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_14-800x600.jpg" alt="PHILIPS 65吋4K顯示器 65PUH7129 #145131" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PHILIPS 65吋4K顯示器 65PUH7129 #145131</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_15-800x600.jpg" alt="KOTEX 靠得住草本抑菌日用衛生棉 #147640" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">KOTEX 靠得住草本抑菌日用衛生棉 #147640</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_18-800x600.jpg" alt="STRESSTABS 克補B群+鋅加強錠 #976575" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">STRESSTABS 克補B群+鋅加強錠 #976575</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_22-800x600.jpg" alt="FEBREZE 風倍清浴廁用防霉防臭劑 #144061" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">FEBREZE 風倍清浴廁用防霉防臭劑 #144061</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_23-800x600.jpg" alt="BEE CHENG HIANG 美珍香休閒雞肉乾 #143002" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">BEE CHENG HIANG 美珍香休閒雞肉乾 #143002</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_24-800x600.jpg" alt="CAPETTA MOSCATO 微甜白酒 #97782" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CAPETTA MOSCATO 微甜白酒 #97782</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_90-800x600.jpg" alt="Costco好市多 APPLE IPHONE 16 / 16 PLUS / 16PRO / 16PRO MAX 全系列最新報價" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Costco好市多 APPLE IPHONE 16 / 16 PLUS / 16PRO / 16PRO MAX 全系列最新報價</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_91-800x600.jpg" alt="WHISPER INFINITY 好自在日用液體衛生棉 24公分 #115671" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">WHISPER INFINITY 好自在日用液體衛生棉 24公分 #115671</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_55-800x600.jpg" alt="LIAN 越南牛肉風味河粉 #1550604" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">LIAN 越南牛肉風味河粉 #1550604</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_56-800x600.jpg" alt="THE APPLE PRESS 愛妃蘋果汁 #135292" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">THE APPLE PRESS 愛妃蘋果汁 #135292</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_57-800x600.jpg" alt="WANCHAI 灣仔碼頭冷凍鮮肉小籠湯包 #138640" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">WANCHAI 灣仔碼頭冷凍鮮肉小籠湯包 #138640</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_58-800x600.jpg" alt="PARMAREGGIO 帕瑪吉蘭諾乾酪30個月熟成 #145209" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PARMAREGGIO 帕瑪吉蘭諾乾酪30個月熟成 #145209</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_59-800x600.jpg" alt="FRENCH’S 黃芥茉醬 #114793" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">FRENCH’S 黃芥茉醬 #114793</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_60-800x600.jpg" alt="CHUPA CHUPS 加倍佳繽紛盒棒棒糖(綜合口味) #1113388" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CHUPA CHUPS 加倍佳繽紛盒棒棒糖(綜合口味) #1113388</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_61-800x600.jpg" alt="VITAKRAFT 貓快餐肉條雙口味單條包裝 #231338" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">VITAKRAFT 貓快餐肉條雙口味單條包裝 #231338</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_63-800x600.jpg" alt="VIVERE DOUBLE CACOON 戶外雙人吊椅 #1740643" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">VIVERE DOUBLE CACOON 戶外雙人吊椅 #1740643</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_64-800x600.jpg" alt="ORANGE HOUSE 橘子工坊除臭酵素洗衣精 #218569" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">ORANGE HOUSE 橘子工坊除臭酵素洗衣精 #218569</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_67-800x600.jpg" alt="GLOWIEST 煥彩面膜組 #674992" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">GLOWIEST 煥彩面膜組 #674992</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_68-800x600.jpg" alt="AVEENO 艾惟諾香氛護手霜 #137616" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">AVEENO 艾惟諾香氛護手霜 #137616</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_70-800x600.jpg" alt="MUSTELA 慕之恬廊高效性兒童防曬乳 #143227" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">MUSTELA 慕之恬廊高效性兒童防曬乳 #143227</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_71-800x600.jpg" alt="PALMOLIVE 棕欖精粹保濕沐浴乳 #146005" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PALMOLIVE 棕欖精粹保濕沐浴乳 #146005</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_72-800x600.jpg" alt="AROMASE 艾瑪絲胺基酸去屑洗髮精 #138554" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">AROMASE 艾瑪絲胺基酸去屑洗髮精 #138554</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_74-800x600.jpg" alt="DICK 男工作長褲 #1763791" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">DICK 男工作長褲 #1763791</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_75-800x600.jpg" alt="UNDER ARMOUR 女V領短袖上衣 #1525947" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">UNDER ARMOUR 女V領短袖上衣 #1525947</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_77-800x600.jpg" alt="TIMBERLAND 男短袖POLO衫 #134126" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">TIMBERLAND 男短袖POLO衫 #134126</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_78-800x600.jpg" alt="TAILOR VINTAGE 男休閒短褲 #130624" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">TAILOR VINTAGE 男休閒短褲 #130624</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_79-800x600.jpg" alt="LEVI’S 女童牛仔洋裝 #148080" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">LEVI’S 女童牛仔洋裝 #148080</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_80-800x600.jpg" alt="PHYSIOGEL 潔美淨層脂質安撫修護AI乳液組 #142826" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PHYSIOGEL 潔美淨層脂質安撫修護AI乳液組 #142826</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_81-800x600.jpg" alt="CUREL 珂潤清潔保濕臉部保養組 #146325" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CUREL 珂潤清潔保濕臉部保養組 #146325</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_83-800x600.jpg" alt="LIFE FRND 園藝電動灑水器1.2公升 #665382" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">LIFE FRND 園藝電動灑水器1.2公升 #665382</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_84-800x600.jpg" alt="PALLADIUM 女多功能輕量防水戶外鞋 #150258" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PALLADIUM 女多功能輕量防水戶外鞋 #150258</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_85-800x600.jpg" alt="大型彈珠遊戲台 #1819488" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">大型彈珠遊戲台 #1819488</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_86-800x600.jpg" alt="AIRWAVES 紫冰野莓無糖口香糖 #195826" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">AIRWAVES 紫冰野莓無糖口香糖 #195826</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_1-800x600.jpg" alt="大金變頻冷暖大關U系列 #135022 #135028 #135036 #135041 #135050 #135060 #135701" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">大金變頻冷暖大關U系列 #135022 #135028 #135036 #135041 #135050 #135060 #135701</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_2-800x600.jpg" alt="CARMIEN 南非博士茶 #604255" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CARMIEN 南非博士茶 #604255</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_4-800x600.jpg" alt="FUTONG 富統小熱狗 #16886" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">FUTONG 富統小熱狗 #16886</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_6-800x600.jpg" alt="YUMMY DOTS 享點子泰式綠咖哩雞 #146149" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">YUMMY DOTS 享點子泰式綠咖哩雞 #146149</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_8-800x600.jpg" alt="QUAKER 無添加糖黃金蕎麥多穀飲 #101776" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">QUAKER 無添加糖黃金蕎麥多穀飲 #101776</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_9-800x600.jpg" alt="KINDER 健達繽紛樂 #68940" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">KINDER 健達繽紛樂 #68940</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_10-800x600.jpg" alt="GREAT DAY 銀耳燕麥杏仁露 #149348" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">GREAT DAY 銀耳燕麥杏仁露 #149348</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_11-800x600.jpg" alt="SALTED 焦糖奶油抹醬 #145501" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SALTED 焦糖奶油抹醬 #145501</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_12-800x600.jpg" alt="SKECHERS 散熱凝膠記憶坐墊 #140985" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SKECHERS 散熱凝膠記憶坐墊 #140985</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_13-800x600.jpg" alt="M2R 全罩式雙鏡安全帽 ST-303 #148152" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">M2R 全罩式雙鏡安全帽 ST-303 #148152</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_14-800x600.jpg" alt="UMBRA 琴鍵造型掛勾 每組5掛勾2組入 #318211" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">UMBRA 琴鍵造型掛勾 每組5掛勾2組入 #318211</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_15-800x600.jpg" alt="CASTROL 嘉實多SN全合成機油 0W-20 #125480" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CASTROL 嘉實多SN全合成機油 0W-20 #125480</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_16-800x600.jpg" alt="MATCHBOX 小汽車20入 #146675" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">MATCHBOX 小汽車20入 #146675</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_17-800x600.jpg" alt="RADIO FLYER 輕型拖車 #147077" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">RADIO FLYER 輕型拖車 #147077</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_18-800x600.jpg" alt="TOMICA 50連發巨型停車塔 附5台小汽車 #148137" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">TOMICA 50連發巨型停車塔 附5台小汽車 #148137</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_19-800x600.jpg" alt="LEGO FRIENDS 42624 冒險營溫馨小屋 #152435" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">LEGO FRIENDS 42624 冒險營溫馨小屋 #152435</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_20-800x600.jpg" alt="JOYOUNG 九陽養生壺1.5公升 TP15Q#147020" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">JOYOUNG 九陽養生壺1.5公升 TP15Q#147020</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_22-800x600.jpg" alt="DISNEY 長形印花地毯 #146144" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">DISNEY 長形印花地毯 #146144</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_23-800x600.jpg" alt="沙灘推車玩具20件組 #1785036" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">沙灘推車玩具20件組 #1785036</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_24-800x600.jpg" alt="SUNDAY AFTERNOONS 漁夫帽 #149188" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SUNDAY AFTERNOONS 漁夫帽 #149188</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_25-800x600.jpg" alt="LIFETIME 塑膠折疊椅 #2000202" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">LIFETIME 塑膠折疊椅 #2000202</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_26-800x600.jpg" alt="TCL 85吋4K MINILED顯示器 #147630" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">TCL 85吋4K MINILED顯示器 #147630</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_27-800x600.jpg" alt="SAMSUNG 43吋4K顯示器 #146902" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SAMSUNG 43吋4K顯示器 #146902</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_28-800x600.jpg" alt="RICARDO 30吋行李箱 #148411" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">RICARDO 30吋行李箱 #148411</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_29-800x600.jpg" alt="LOOPLOOP 懸臂式多角度調整壁掛架 適用40~80吋螢幕 #145780" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">LOOPLOOP 懸臂式多角度調整壁掛架 適用40~80吋螢幕 #145780</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_32-800x600.jpg" alt="MEGARED 濃縮純淨藻油 OMEGA-3軟膠囊 #142926" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">MEGARED 濃縮純淨藻油 OMEGA-3軟膠囊 #142926</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_33-800x600.jpg" alt="ACUVUE OASYS 安視優歐舒適二週拋棄式隱形眼鏡" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">ACUVUE OASYS 安視優歐舒適二週拋棄式隱形眼鏡</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_34-800x600.jpg" alt="ACUVUE OASYS 安視優歐舒適每日拋棄式隱形眼鏡" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">ACUVUE OASYS 安視優歐舒適每日拋棄式隱形眼鏡</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_36-800x600.jpg" alt="KIRKLAND SIGNATURE 科克蘭男運動襪8雙入 #7771590" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">KIRKLAND SIGNATURE 科克蘭男運動襪8雙入 #7771590</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_38-800x600.jpg" alt="DKNY 女短袖針織POLO衫 #880015" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">DKNY 女短袖針織POLO衫 #880015</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_39-800x600.jpg" alt="OLZEN 韓版男短袖上衣 #668018" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">OLZEN 韓版男短袖上衣 #668018</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_40-800x600.jpg" alt="兒童短袖短褲兩件組 #146722" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">兒童短袖短褲兩件組 #146722</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_42-800x600.jpg" alt="JEZEBEL 女蕾絲襯裙二入組 #150523" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">JEZEBEL 女蕾絲襯裙二入組 #150523</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_43-800x600.jpg" alt="NIKE 女圓領短袖上衣 #1763734" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">NIKE 女圓領短袖上衣 #1763734</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_44-800x600.jpg" alt="MON PETIT 貓倍麗小鮮肉泥 #117068" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">MON PETIT 貓倍麗小鮮肉泥 #117068</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_45-800x600.jpg" alt="兒童電動碰碰車 #1784989" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">兒童電動碰碰車 #1784989</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_46-800x600.jpg" alt="KID-O 厚餡夾心酥雙重奏 #146338" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">KID-O 厚餡夾心酥雙重奏 #146338</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_47-800x600.jpg" alt="CROWN 多穀牛奶夾心餅乾 #126883" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CROWN 多穀牛奶夾心餅乾 #126883</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_48-800x600.jpg" alt="COMBOS 冠寶起司捲心餅 #8876836" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">COMBOS 冠寶起司捲心餅 #8876836</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_49-800x600.jpg" alt="PRETZ 百力滋風味棒 #352414" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PRETZ 百力滋風味棒 #352414</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_51-800x600.jpg" alt="LOTTE 樂天千層派濃厚巧克力風味 #144897" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">LOTTE 樂天千層派濃厚巧克力風味 #144897</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_52-800x600.jpg" alt="BEE CHENG HIANG 美珍香休閒雞肉乾 #143002" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">BEE CHENG HIANG 美珍香休閒雞肉乾 #143002</div>
+                    </div>
+                </div>
+                <div class="product-card landscape-card">
+                    <div class="product-image-container landscape">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_53-800x600.jpg" alt="大金變頻冷暖大關 22Z-71Z #154022 #154028 #154036 #154041 #154050 #154060 #154071" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge landscape-badge">橫向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">大金變頻冷暖大關 22Z-71Z #154022 #154028 #154036 #154041 #154050 #154060 #154071</div>
+                    </div>
+                </div></div>
+        <div class="section-header">
+            <h2>📱 直向商品圖片 (32 張)</h2>
+            <p>適合展示商品細節的高度圖片</p>
+        </div>
+        <div class="products-section portrait-section">
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_1-600x800.jpg" alt="BC CLOTHING 男彈性長褲 #148451" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">BC CLOTHING 男彈性長褲 #148451</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_4-600x800.jpg" alt="K＆K 紅龍冷凍牛肉捲 #64012" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">K＆K 紅龍冷凍牛肉捲 #64012</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_5-600x800.jpg" alt="BINGGRAE 哈密瓜雪糕 #87914" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">BINGGRAE 哈密瓜雪糕 #87914</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_8-600x800.jpg" alt="ASC冷凍吳郭魚片 #484596" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">ASC冷凍吳郭魚片 #484596</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_11-600x800.jpg" alt="奶油蝴蝶酥8入 #146353" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">奶油蝴蝶酥8入 #146353</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_16-600x800.jpg" alt="TP-LINK AX3000 ARCHER AX55 雙頻WIFI 6 路由器 #140765" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">TP-LINK AX3000 ARCHER AX55 雙頻WIFI 6 路由器 #140765</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_17-600x800.jpg" alt="TREE TOP 蘋果汁 #30991" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">TREE TOP 蘋果汁 #30991</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_19-600x800.jpg" alt="STRESSTABS 克補B群+鐵加強錠 #976577" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">STRESSTABS 克補B群+鐵加強錠 #976577</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_20-600x800.jpg" alt="WEIDER 威德海洋膠原粉+鐵 #102999" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">WEIDER 威德海洋膠原粉+鐵 #102999</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_第2檔_250718_21-600x800.jpg" alt="HADA LABO 肌研金緻保濕精華液 #143541" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">HADA LABO 肌研金緻保濕精華液 #143541</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_87-600x800.jpg" alt="DURO 32吋木炭烤肉爐 #1807116" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">DURO 32吋木炭烤肉爐 #1807116</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_88-600x800.jpg" alt="DURO 19吋攜帶式木炭烤肉爐 #1807282" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">DURO 19吋攜帶式木炭烤肉爐 #1807282</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_89-600x800.jpg" alt="CONCHA Y TORO 孔雀特級典藏紅酒 2021 #95478" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CONCHA Y TORO 孔雀特級典藏紅酒 2021 #95478</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_92-600x800.jpg" alt="味全 簡單點鮮奶優格 #145769" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">味全 簡單點鮮奶優格 #145769</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_62-600x800.jpg" alt="SERENA 喜年來爽辣V餅乾青花椒口味 #151286" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SERENA 喜年來爽辣V餅乾青花椒口味 #151286</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_65-600x800.jpg" alt="PNY PRO ELITE 500GB SSD 攜帶式固態硬碟 #127847" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PNY PRO ELITE 500GB SSD 攜帶式固態硬碟 #127847</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_66-600x800.jpg" alt="AGV 愛之味純濃燕麥(原味) #97313" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">AGV 愛之味純濃燕麥(原味) #97313</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_69-600x800.jpg" alt="PHYSIOGEL 潔美淨特潤緊緻撫紋精華 #142812" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PHYSIOGEL 潔美淨特潤緊緻撫紋精華 #142812</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_73-600x800.jpg" alt="PALLADIUM 男多功能輕量防水戶外鞋 #150257" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">PALLADIUM 男多功能輕量防水戶外鞋 #150257</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_76-600x800.jpg" alt="POLO RALPH LAUREN 男短袖純綿POLO衫 #1041853" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">POLO RALPH LAUREN 男短袖純綿POLO衫 #1041853</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_82-600x800.jpg" alt="BIORE 涼感濕巾加大版 #148527" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">BIORE 涼感濕巾加大版 #148527</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_3-600x800.jpg" alt="SWANSON 史雲生清雞湯 #993145" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SWANSON 史雲生清雞湯 #993145</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_5-600x800.jpg" alt="CHESDALE 芝司樂原味高鈣起司球 #100531" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">CHESDALE 芝司樂原味高鈣起司球 #100531</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_7-600x800.jpg" alt="QUAKER 桂格北海道風味特濃燕麥片 #78299" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">QUAKER 桂格北海道風味特濃燕麥片 #78299</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_21-600x800.jpg" alt="ALLERTECT 雙人涼感墊 #630015" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">ALLERTECT 雙人涼感墊 #630015</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_30-600x800.jpg" alt="MAD HIPPIE 維他命A精華 #1835856" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">MAD HIPPIE 維他命A精華 #1835856</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_31-600x800.jpg" alt="BINGGRAE 草莓牛奶(保久調味乳) #298720" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">BINGGRAE 草莓牛奶(保久調味乳) #298720</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_35-600x800.jpg" alt="OMRON 歐姆龍電子血壓計 HEM-7600T #126946" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">OMRON 歐姆龍電子血壓計 HEM-7600T #126946</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_37-600x800.jpg" alt="TERM 女童皮鞋 #432933" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">TERM 女童皮鞋 #432933</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_41-600x800.jpg" alt="ANDREW MARC 女打摺短褲 #888013" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">ANDREW MARC 女打摺短褲 #888013</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_50-600x800.jpg" alt="SAMSUNG 直立式變頻洗衣機13公斤 WA13CG5745BY/TW #140530" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SAMSUNG 直立式變頻洗衣機13公斤 WA13CG5745BY/TW #140530</div>
+                    </div>
+                </div>
+                <div class="product-card portrait-card">
+                    <div class="product-image-container portrait">
+                        <img src="https://www.daybuy.tw/wp-content/uploads/2025/07/LINE_ALBUM_隱藏優惠_250718_54-600x800.jpg" alt="SAMSUNG 351公升極簡雙門冰箱 #146868" class="product-image" loading="lazy">
+                        <div class="image-ratio-badge portrait-badge">直向</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">SAMSUNG 351公升極簡雙門冰箱 #146868</div>
+                    </div>
+                </div></div>
+        </div>
+
+        <div class="footer">
+            <p>資料來源：<a href="https://www.daybuy.tw/costco/197852/" target="_blank">DayBuy</a></p>
+            <p>最後更新：2025-07-19 23:29:06</p>
+            <p>此資料僅供參考，實際優惠請以現場為準</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.product-image');
+            let loadedCount = 0;
+            
+            // 從HTML中計算統計數據
+            const landscapeImages = document.querySelectorAll('.landscape-card').length;
+            const portraitImages = document.querySelectorAll('.portrait-card').length;
+            
+            // 添加統計到頁面
+            updateImageStats(landscapeImages, portraitImages);
+            
+            images.forEach((img) => {
+                img.addEventListener('error', function() {
+                    const container = this.parentElement;
+                    const isLandscape = container.classList.contains('landscape');
+                    const height = isLandscape ? '200px' : '300px';
+                    container.innerHTML = '<div style="height:' + height + ';display:flex;align-items:center;justify-content:center;color:#999;">圖片載入失敗 🖼️</div>';
+                });
+                
+                img.addEventListener('load', function() {
+                    loadedCount++;
+                    if (loadedCount === images.length) {
+                        console.log('✅ 頁面載入完成 - 橫向:', landscapeImages, '直向:', portraitImages);
+                    }
+                });
+            });
+            
+            function updateImageStats(landscape, portrait) {
+                const statsContainer = document.querySelector('.stats');
+                if (statsContainer && (landscape > 0 || portrait > 0)) {
+                    const landscapeStats = document.createElement('div');
+                    landscapeStats.className = 'stat-item';
+                    landscapeStats.innerHTML = '<span class="stat-number">' + landscape + '</span><div class="stat-label">橫向圖片</div>';
+                    
+                    const portraitStats = document.createElement('div');
+                    portraitStats.className = 'stat-item';
+                    portraitStats.innerHTML = '<span class="stat-number">' + portrait + '</span><div class="stat-label">直向圖片</div>';
+                    
+                    statsContainer.appendChild(landscapeStats);
+                    statsContainer.appendChild(portraitStats);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
